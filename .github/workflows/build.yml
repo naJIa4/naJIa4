@@ -18,11 +18,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Move project files to root
+      - name: Extract and move project files
         run: |
-          if [ -d "AdBlockerProject" ]; then
+          ls -la
+          if [ -f "AdBlockerProject.zip" ]; then
+            unzip -o AdBlockerProject.zip
             mv AdBlockerProject/* .
             rm -rf AdBlockerProject
+            rm -f AdBlockerProject.zip
           fi
           ls -la
 
