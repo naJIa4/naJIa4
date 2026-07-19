@@ -23,6 +23,14 @@ jobs:
         with:
           gradle-version: 8.2
 
+      - name: Move project files to root
+        run: |
+          if [ -d "AdBlockerProject" ]; then
+            mv AdBlockerProject/* .
+            rm -rf AdBlockerProject
+          fi
+          ls -la
+
       - name: Build Debug APK
         run: gradle assembleDebug
 
@@ -39,4 +47,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: adblocker-release-apk
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
+          path: app/build/outputs/apk/release/app-release-unsigned.apk          
