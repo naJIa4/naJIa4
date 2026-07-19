@@ -18,11 +18,6 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: 8.2
-
       - name: Move project files to root
         run: |
           if [ -d "AdBlockerProject" ]; then
@@ -47,4 +42,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: adblocker-release-apk
-          path: app/build/outputs/apk/release/app-release-unsigned.apk          
+          path: app/build/outputs/apk/release/app-release-unsigned.apk
